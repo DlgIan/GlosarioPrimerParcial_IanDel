@@ -1,0 +1,36 @@
+﻿@page
+@model GlosarioPrimerParcial_IanDel.Pages.HTMLModel
+@{
+    ViewData["Title"] = "Glosario de HTML";
+}
+
+<a href="/" style="text-decoration: none; color: #333; font-weight: bold;">← Volver al Menú</a>
+<h1 style="color: #e34c26; margin-top: 15px;">Glosario de HTML</h1>
+
+<!-- Formulario para agregar una palabra nueva -->
+<div style="background-color: #f9f9f9; padding: 25px; border-radius: 10px; margin-bottom: 40px; border: 1px solid #ddd;">
+    <h3 style="margin-top: 0;">Agregar Nuevo Término</h3>
+    <form method="post">
+        <div style="margin-bottom: 15px;">
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Palabra:</label>
+            <input type="text" name="nuevapalabra" required placeholder="Ej. Etiqueta <a>" style="width: 100%; max-width: 400px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" />
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Definición:</label>
+            <textarea name="nuevadefinicion" required placeholder="Escribe la definición aquí..." rows="3" style="width: 100%; max-width: 400px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
+        </div>
+        <button type="submit" style="background-color: #e34c26; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Guardar Término</button>
+    </form>
+</div>
+
+<!-- Zona donde se muestran las palabras guardadas -->
+<h3>Términos Guardados</h3>
+<div style="display: flex; flex-direction: column; gap: 15px;">
+    @foreach (var termino in HTMLModel.GlosarioHTML) 
+    {
+        <div style="border-left: 5px solid #e34c26; padding: 15px 20px; background-color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-radius: 0 8px 8px 0;">
+            <h4 style="margin: 0 0 10px 0; color: #e34c26; font-size: 1.3rem;">@termino.Palabra</h4>
+            <p style="margin: 0; color: #444;">@termino.Definicion</p>
+        </div>
+    }
+</div>
